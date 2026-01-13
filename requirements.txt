@@ -4,6 +4,6 @@ gunicorn
 edge-tts
 openai-whisper
 moviepy==1.0.3
-Pillow
-numpy
+pillow
+numpy<2.0.0
 requests
