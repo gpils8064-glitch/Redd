@@ -64,12 +64,20 @@ def generar_clips_subtitulos(audio_path):
         for word_info in segment['words']:
             todas_las_palabras.append(word_info)
 
-    FONT_TYPE = 'DejaVu-Sans-Bold' 
-    if platform.system() 
-        != "Windows" 
-    else 
-        'Impact'
-
+    PALABRAS_POR_GRUPO = 3
+    FONT_SIZE = 90 
+    
+    if platform.system() == "Windows":
+        FONT_TYPE = 'Impact'
+    else:
+        try:
+            from moviepy.config import get_setting
+            FONT_TYPE = 'DejaVu-Sans-Bold' 
+        except:
+            FONT_TYPE = 'Arial'
+            
+    GROSOR_BORDE = 8
+    
     for i in range(0, len(todas_las_palabras), PALABRAS_POR_GRUPO):
         grupo = todas_las_palabras[i:i+PALABRAS_POR_GRUPO]
         if not grupo: continue
