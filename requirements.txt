@@ -1,7 +1,9 @@
 flask
 flask-cors
 gunicorn
-moviepy
-requests
-praw
 edge-tts
+openai-whisper
+moviepy==1.0.3
+Pillow
+numpy
+requests
