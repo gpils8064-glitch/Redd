@@ -5,7 +5,7 @@ import os
 import PIL.Image
 import whisper
 import sys
-
+import platform 
 # --- PARCHE COMPATIBILIDAD ---
 if not hasattr(PIL.Image, 'ANTIALIAS'):
     PIL.Image.ANTIALIAS = PIL.Image.LANCZOS
@@ -17,13 +17,14 @@ from moviepy.config import change_settings
 # ==============================================================================
 # ⚠️ TU RUTA DE IMAGEMAGICK
 # ==============================================================================
-RUTA_IMAGEMAGICK = r"C:\Program Files\ImageMagick-7.1.2-Q16-HDRI\magick.exe"
 
-if os.path.exists(RUTA_IMAGEMAGICK):
-    change_settings({"IMAGEMAGICK_BINARY": RUTA_IMAGEMAGICK})
+if platform.system() == "Windows":
+    RUTA_IMAGEMAGICK = r"C:\Program Files\ImageMagick-7.1.2-Q16-HDRI\magick.exe"
+    if os.path.exists(RUTA_IMAGEMAGICK):
+        change_settings({"IMAGEMAGICK_BINARY": RUTA_IMAGEMAGICK})
 else:
-    print(f"❌ ERROR CRÍTICO: No encuentro el archivo en: {RUTA_IMAGEMAGICK}")
-
+    pass
+    
 def dividir_texto_inteligente(texto, max_palabras=600):
     palabras = texto.split()
     partes = []
