@@ -1,0 +1,21 @@
+const API_URL = "https://redd-2w6h.onrender.com/"; // ← Tu URL de Railway
+const handleRender = async () => {
+  const response = await fetch(${API_URL}/render, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      title: titulo,
+      voice: vozSeleccionada,
+      storyContent: historia
+    })
+  });
+
+  const blob = await response.blob();
+  const url = URL.createObjectURL(blob);
+
+  // Descargar el video
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = ${titulo}.mp4;
+  a.click();
+};
